@@ -25,6 +25,7 @@ kind-cluster-delete: ## Delete Kind cluster.
 helm-repo-add: ## Add helm repository for AWX Operator.
 	@echo "Adding helm repository for AWX Operator..."
 	helm repo add awx-operator https://ansible-community.github.io/awx-operator-helm/
+	helm repo update
 
 helm-install-awx: ## Install/upgrade AWX Operator.
 	@echo "Installing/upgrading AWX Operator..."
@@ -57,6 +58,4 @@ demo-build: ## Build demo environment.
 	make awx-instance-apply
 
 demo-delete: ## Delete demo environment.
-	make awx-instance-delete
-	make helm-install-awx
 	make kind-cluster-delete
