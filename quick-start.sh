@@ -81,3 +81,13 @@ kubectl apply -f "$tmp_awx" --namespace awx
 rm "$tmp_awx"
 
 echo "Demo build complete."
+
+
+
+# Show the admin password
+echo "Waiting for AWX admin password to be available..."
+while ! kubectl get secret awx-demo-admin-password -n awx &> /dev/null; do
+  sleep 1
+done
+echo "AWX username: admin"
+echo "AWX password: $(kubectl get secret awx-demo-admin-password -n awx -o jsonpath='{.data.password}' | base64 --decode)"

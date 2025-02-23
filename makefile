@@ -8,7 +8,7 @@ HELM_VERSION_FLAG = $(if $(HELM_CHART_VERSION),--version $(HELM_CHART_VERSION),)
 
 .DEFAULT_GOAL := help
 
-.PHONY: help build-kind-cluster delete-kind-cluster helm-repo-add helm-install-awx helm-list-versions helm-get-values awx-describe-crd awx-instance-apply awx-instance-delete demo-build demo-delete
+.PHONY: help build-kind-cluster delete-kind-cluster helm-repo-add helm-install-awx helm-list-versions helm-get-values awx-describe-crd awx-instance-apply awx-instance-delete awx-instance-password demo-build demo-delete
 
 help: ## Display this help message.
 	@echo "Available tasks:"
@@ -49,6 +49,9 @@ awx-instance-apply: ## Apply AWX instance manifest.
 awx-instance-delete: ## Delete AWX instance.
 	kubectl delete -f $(AWX_INSTANCE_FILE) --namespace awx
 
+awx-instance-password: ## Get AWX instance password.
+	@echo "AWX username: admin"
+	@echo "AWX password: $(shell kubectl get secret --namespace awx awx-admin-password -o jsonpath="{.data.password}" | base64 --decode)"
 
 demo-build: ## Build demo environment.
 	make kind-cluster-delete || true
