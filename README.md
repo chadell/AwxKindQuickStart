@@ -10,9 +10,16 @@ This repository contains a Makefile with tasks to help you:
 
 > **Note:** The Makefile uses dynamic help so that running `make` with no arguments will display a list of all available tasks.
 
----
 
-## Getting Started
+## Quick Start Guide
+
+This quick start guide will help you set up an AWX cluster using Kind and Helm with a single command.
+
+```bash
+curl -sSL https://raw.githubusercontent.com/josephaw1022/AwxKindQuickStart/main/quick-start.sh | bash
+```
+
+## Getting Started with the Makefile
 
 ### 1. Create the Kind Cluster
 
@@ -74,6 +81,12 @@ To delete the AWX instance later, run:
 
 ```sh
 make awx-instance-delete
+```
+
+To obtain the AWX's admin credentials, run:
+
+```sh
+make awx-instance-password
 ```
 
 ---
