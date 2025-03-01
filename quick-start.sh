@@ -3,7 +3,7 @@ set -e
 
 # Default values
 DEFAULT_CLUSTER_NAME="awx-cluster-demo"
-DEFAULT_HOST_PORT=8080
+DEFAULT_HOST_PORT=8383
 
 # Parse command-line options (-c for cluster name, -p for host port)
 while getopts "c:p:" opt; do
