@@ -21,6 +21,10 @@ curl -sSL https://raw.githubusercontent.com/josephaw1022/AwxKindQuickStart/main/
 
 ## Getting Started with the Makefile
 
+### 0. Install Kind
+
+Follow the official guidelines from https://kind.sigs.k8s.io/docs/user/quick-start/ according to your OS.
+
 ### 1. Create the Kind Cluster
 
 Use the following command to create your Kind cluster:
